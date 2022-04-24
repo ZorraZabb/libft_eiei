@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:32:14 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/22 00:33:36 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/24 11:32:49 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst->next)
+	while (lst)
 	{
+		if (lst->next == NULL)
+			return (lst);
 		lst = lst->next;
 	}
 	return (lst);

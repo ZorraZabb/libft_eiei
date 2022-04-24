@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:56:24 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/22 10:09:29 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/23 21:43:09 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,33 @@ int	check_equal(char c, char const *set)
 	return (0);
 }
 
+char	*ft_make_arr(int i, int j, char const *s1, char const *set)
+{
+	char	*arr;
+	int		c_j;
+
+	c_j = 0;
+	while (*(s1 + i) != '\0' && check_equal(*(s1 + i), set))
+		i++;
+	while (j >= 0 && check_equal(*(s1 + j - 1), set))
+	{
+		c_j++;
+		j--;
+	}
+	arr = ft_substr(s1 + i, 0, ft_strlen(s1 + i) - c_j);
+	return (arr);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i_start;
-	int	i_last;
-	int	count;
+	int		i_start;
+	int		i_last;
+	char	*arr;
 
+	if (!s1 || !set)
+		return (NULL);
 	i_start = 0;
-	count = 0;
 	i_last = ft_strlen(s1);
-	while (*(s1 + i_start) != '\0')
-	{
-		if (check_equal(*(s1 + i_start), set))
-			i_start++;
-		else
-			break ;
-	}
-	while (i_last >= 0)
-	{
-		if (check_equal(*(s1 + (i_last - 1)), set))
-		{
-			count++;
-			i_last--;
-		}
-		else
-			break ;
-	}
-	return (ft_substr(s1, i_start, ft_strlen(s1 + i_start) - count));
+	arr = ft_make_arr(i_start, i_last, s1, set);
+	return (arr);
 }

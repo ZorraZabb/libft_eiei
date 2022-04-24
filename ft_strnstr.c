@@ -6,11 +6,12 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:32:51 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/22 11:06:49 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/23 22:36:45 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -18,25 +19,32 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t		j;
 
 	i = 0;
-	j = 0;
-	if (len < 0)
-		len = len * -1;
 	if (*(needle + i) == '\0')
 		return ((char *)haystack);
-	while (*(needle + j) != '\0')
+	while (*(haystack + i) != '\0')
 	{
-		while (*(haystack + i) != '\0' && i < len)
+		j = 0;
+		if (*(needle + j) == *(haystack + i))
 		{
-			if (*(needle + j) == *(haystack + i))
+			while (*(needle + j) == *(haystack + i + j) && i + j < len)
 			{
-				if (*(needle + ++j) == '\0')
-					return ((char *)haystack + (i - j + 1));
+				j++;
+				if (*(needle + j) == '\0')
+					return ((char *)haystack + i);
 			}
-			else
-				j = 0;
-			i++;
 		}
-		return (NULL);
+		i++;
 	}
 	return (NULL);
 }
+/*
+#include <string.h>
+
+int main(void)
+{
+	char h[30] = "aaabcabc";
+	char n[10] = "aabc";
+	printf("[%s]\n",ft_strnstr(h, n, -1));
+	printf("[%s]\n",strnstr(h, n, -1));
+	return (0);
+}*/

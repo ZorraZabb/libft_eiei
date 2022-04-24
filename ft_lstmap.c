@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:42:38 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/22 01:05:33 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/24 12:16:07 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst)
 		return (NULL);
-	tmp = lst;
-	while (lst->next)
+	new_lst = NULL;
+	while (lst != NULL)
 	{
 		tmp = ft_lstnew(f(lst->content));
 		if (!tmp)
@@ -29,7 +29,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			return (NULL);
 		}
 		ft_lstadd_back(&new_lst, tmp);
-		return (new_lst);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (new_lst);
 }
