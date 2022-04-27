@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:17:07 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/24 01:55:05 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:54:33 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	int		count;
 
+	if (!s)
+		return (NULL);
 	if (start > ft_strlen(s))
 	{
 		sub = (char *) malloc(1);
@@ -40,6 +42,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (sub);
 	}
 	sub = (char *) malloc(sizeof(char) * count_string(s, start, len) + 1);
+	if (!sub)
+		return (NULL);
 	count = 0;
 	while (len > 0 && *(s + start + count) != '\0')
 	{

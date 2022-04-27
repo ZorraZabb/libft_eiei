@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 22:05:34 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/15 23:08:55 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 12:51:57 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *s, int c)
 	tmp = (char *) s;
 	i = 0;
 	if (!s)
-		return (NULL);
+		return (tmp + i);
 	while (*(tmp + i) != '\0')
 	{
 		if (*(tmp + i) == a)

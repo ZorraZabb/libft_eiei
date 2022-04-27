@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:56:24 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/23 21:43:09 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/27 00:16:57 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	check_equal(char c, char const *set)
 char	*ft_make_arr(int i, int j, char const *s1, char const *set)
 {
 	char	*arr;
-	int		c_j;
+	size_t	c_j;
 
 	c_j = 0;
 	while (*(s1 + i) != '\0' && check_equal(*(s1 + i), set))
 		i++;
-	while (j >= 0 && check_equal(*(s1 + j - 1), set))
+	while (j >= 0 && check_equal(*(s1 + j), set))
 	{
 		c_j++;
 		j--;
@@ -54,6 +54,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	i_start = 0;
 	i_last = ft_strlen(s1);
-	arr = ft_make_arr(i_start, i_last, s1, set);
+	arr = ft_make_arr(i_start, i_last - 1, s1, set);
 	return (arr);
 }
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	char s1[] = "          ";
+	printf("TEST...%s\n", ft_strtrim(s1, " "))	;
+}*/

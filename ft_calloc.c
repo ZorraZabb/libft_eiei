@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 00:48:11 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/20 22:20:24 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 23:17:29 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	int		*s;
-	int		i;
+	void		*s;
+	size_t		i;
 
-	if (count == SIZE_MAX || size == SIZE_MAX)
+	if (count >= SIZE_MAX || size >= SIZE_MAX)
 		return (NULL);
-	s = (int *)malloc(count * size);
+	s = (void *)malloc(count * size);
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (count > 0)
+	while (count * size > i)
 	{
-		s[i] = 0;
+		((char *)s)[i] = 0;
 		i++;
-		count--;
 	}
-	s[i + 1] = '\0';
 	return (s);
 }

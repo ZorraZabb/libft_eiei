@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 11:25:32 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/17 11:34:46 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:01:54 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	size_t	i;
 
 	i = 0;
+	if (!s || !f)
+		return ;
 	while (*(s + i) != '\0')
 	{
 		f(i, s + i);

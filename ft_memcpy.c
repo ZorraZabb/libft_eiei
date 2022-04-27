@@ -6,13 +6,13 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 21:34:42 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/21 01:19:45 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/26 10:53:03 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*tmp_src;
 	char	*tmp_dst;

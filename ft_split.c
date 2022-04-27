@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:12:34 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/24 11:00:39 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/27 00:51:22 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,41 @@ int	count_word(char const *s, char c)
 		i++;
 	}
 	return (count);
-}	
+}
 
-char	**ft_split(char const *s, char c)
+void	ft_free(char **arr, int k)
 {
-	char	**arr;
-	int		i;
-	int		j;
-	int		k;
+	int	i;
 
 	i = 0;
-	j = 0;
+	while (i < k)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return ;
+}
+
+char	**ft_make_split(int i, int j, char const *s, char c)
+{
+	int		k;
+	char	**arr;
+	int		count;
+
 	k = 0;
-	arr = (char **) malloc(count_word(s, c) * sizeof(char *) + 1);
+	count = count_word(s, c);
+	arr = malloc((count + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
-	while (*(s + i) && k < count_word(s, c))
+	while (*(s + i) && k < count)
 	{
 		while (*(s + i) == c && *(s + i) != '\0')
 			i++;
 		while (*(s + i) != c && *(s + i) != '\0')
 		{
-			j++;
 			i++;
+			j++;
 		}
 		arr[k++] = ft_substr(s, i - j, j);
 		j = 0;
@@ -56,18 +68,17 @@ char	**ft_split(char const *s, char c)
 	arr[k] = NULL;
 	return (arr);
 }
-/*
-#include <stdio.h>
-#include <string.h>
 
-int main(void)
+char	**ft_split(char const *s, char c)
 {
-	char *splitme = strdup("Tripoulle ");
-	char **tab = ft_split(splitme, ' ');
+	char	**arr;
+	int		i;
+	int		j;
 
-	printf("[%d][%s]\n",0,tab[0]);
-	printf("[%d][%s]\n",1,tab[1]);
-	printf("[%d][%s]\n",2,tab[2]);
-	printf("[%d][%s]\n",3,tab[3]);
-	printf("[%d][%s]\n",4,tab[4]);
-}*/
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	arr = ft_make_split(i, j, s, c);
+	return (arr);
+}

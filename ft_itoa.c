@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:17:24 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/22 11:41:03 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 22:30:35 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	count_num(int n)
 	return (count);
 }
 
-char	*ft_make_arr(int n, int i, int j, char *arr)
+char	*ft_create_arr(int n, int i, int j, char *arr)
 {
 	if (n == -2147483648)
 	{
@@ -58,10 +58,15 @@ char	*ft_itoa(int n)
 
 	i = count_num(n) - 1;
 	j = count_num(n);
-	arr = (char *) malloc(sizeof(char) * count_num(n) + 2);
+	if (n >= 0)
+		arr = (char *) malloc(sizeof(char) * count_num(n) + 1);
+	else
+		arr = (char *) malloc(sizeof(char) * count_num(n) + 2);
+	if (!arr)
+		return (NULL);
 	if (n == 0)
 		*arr = '0';
-	ft_make_arr(n, i, j, arr);
+	ft_create_arr(n, i, j, arr);
 	if (n < 0)
 		*(arr + j + 1) = '\0';
 	else

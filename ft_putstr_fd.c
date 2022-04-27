@@ -6,7 +6,7 @@
 /*   By: sleelata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 12:39:50 by sleelata          #+#    #+#             */
-/*   Updated: 2022/04/17 12:41:25 by sleelata         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:52:32 by sleelata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s || !fd)
+		return ;
 	while (*s != '\0')
 	{
 		ft_putchar_fd(*s, fd);
